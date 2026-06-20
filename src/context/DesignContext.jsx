@@ -12,14 +12,16 @@ const sectionDefaults = {
   hero: { content: { heading: 'Welcome to the Store', sub: 'Big sales, every day.' } },
   gallery: { content: {} },
   textbox: { content: { text: 'Edit this text to describe your brand, products, or story. Use the sidebar to tweak font size, color, and width.' } },
-  productGrid: { content: {} }
+  productGrid: { content: {} },
+  image: { content: { src: '' } }
 }
 
 const sectionMeta = {
   hero: { label: 'Hero Banner', icon: '▢', color: '#7c5cff' },
   gallery: { label: 'Photo Gallery', icon: '▦', color: '#22d3c5' },
   textbox: { label: 'Text Box', icon: '▤', color: '#ffb86b' },
-  productGrid: { label: 'Product Grid', icon: '▣', color: '#ff6b9d' }
+  productGrid: { label: 'Product Grid', icon: '▣', color: '#ff6b9d' },
+  image: { label: 'Single Image', icon: '🖼', color: '#a0aab8' }
 }
 
 const initialState = {
@@ -115,7 +117,7 @@ function reducer(state, action) {
           ...state.pages,
           [state.activePage]: currentSections.map(s =>
             s.id === sectionId
-              ? { ...s, styles: { ...s.styles, images: [...(s.styles.images || []), imageUrl] } }
+              ? { ...s, styles: { ...s.styles, images: [...(s.styles.images || []), { url: imageUrl, name: 'New Item', price: '$0.00' }] } }
               : s
           )
         }

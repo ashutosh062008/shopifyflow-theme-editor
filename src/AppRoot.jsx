@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import { DesignProvider } from './context/DesignContext'
 import Header from './components/Header'
 import Canvas from './components/Canvas'
-import MenuBuilder from './components/MenuBuilder'
-import ImagePicker from './components/ImagePicker'
+import SidebarLeft from './components/SidebarLeft'
 import StyleTweakerSidebar from './components/StyleTweakerSidebar'
 import TextEditor from './components/TextEditor'
 import CodeGenerator from './components/CodeGenerator'
@@ -18,10 +17,7 @@ export default function AppRoot() {
         <Header previewMode={previewMode} setPreviewMode={setPreviewMode} />
         <div className={"app-layout" + (previewMode ? ' preview' : '')}>
           {!previewMode && (
-            <aside className="left-panel">
-              <MenuBuilder />
-              <ImagePicker />
-            </aside>
+            <SidebarLeft />
           )}
           <main className="canvas-area">
             <Canvas />

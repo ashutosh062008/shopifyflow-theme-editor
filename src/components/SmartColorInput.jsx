@@ -12,29 +12,28 @@ export default function SmartColorInput({ value, onChange }) {
   const handleInput = (e) => {
     const v = e.target.value
     setLocalValue(v)
-    if (isValidHex(v)) onChange(v)
+    onChange(v)
   }
 
   return (
     <div>
       <div className="color-input-row">
-        <div
-          className="color-swatch"
+        <input
+          type="color"
+          className="color-picker-input"
+          value={valid ? localValue : '#000000'}
+          onChange={handleInput}
           style={{
-            background: valid ? localValue : '#1c2130',
-            boxShadow: valid ? `0 0 0 2px #7c5cff33` : 'none',
-            transition: 'box-shadow .2s'
+            width: '100%',
+            height: '40px',
+            padding: '0',
+            border: '1px solid var(--line)',
+            borderRadius: '8px',
+            background: 'var(--panel)',
+            cursor: 'pointer'
           }}
         />
-        <input
-          type="text"
-          className={!valid && !isEmpty ? 'invalid' : ''}
-          value={localValue}
-          onChange={handleInput}
-          placeholder="#7c5cff"
-        />
       </div>
-      {!valid && !isEmpty && <div className="invalid-text">Invalid hex code</div>}
     </div>
   )
 }
